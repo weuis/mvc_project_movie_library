@@ -1,4 +1,6 @@
-let movies = [];
+const { loadMovies, saveMovies } = require('../utils/db');
+
+let movies = loadMovies();
 
 exports.index = (req, res) => {
     res.render('movies/index', { movies });
@@ -20,5 +22,6 @@ exports.addMovie = (req, res) => {
     };
 
     movies.push(newMovie);
+    saveMovies(movies);
     res.redirect('/');
 };
