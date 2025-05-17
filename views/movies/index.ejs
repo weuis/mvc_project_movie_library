@@ -1,0 +1,17 @@
+<%- include('../partials/header') %>
+
+<h1>Moja kolekcja filmów</h1>
+<a href="/add">Dodaj nowy film</a>
+
+<ul>
+    <% if (movies.length === 0) { %>
+        <li>Brak filmów w kolekcji.</li>
+    <% } %>
+    <% movies.forEach((movie, index) => { %>
+        <li>
+            <strong><%= movie.title %></strong> – <%= movie.director %>, Ocena: <%= movie.rating %>
+        </li>
+    <% }) %>
+</ul>
+
+<%- include('../partials/footer') %>

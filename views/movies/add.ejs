@@ -1,0 +1,11 @@
+<%- include('../partials/header') %>
+
+<h2>Dodaj film</h2>
+<form method="POST" action="/add">
+    <input type="text" name="title" placeholder="Tytuł" required />
+    <input type="text" name="director" placeholder="Reżyser" required />
+    <input type="number" name="rating" min="1" max="10" placeholder="Ocena" required />
+    <button type="submit">Dodaj</button>
+</form>
+
+<%- include('../partials/footer') %>
