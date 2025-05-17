@@ -8,10 +8,12 @@
         <li>Brak filmów w kolekcji.</li>
     <% } %>
     <% movies.forEach((movie, index) => { %>
-            <li>
-                <strong><%= movie.title %></strong> – <%= movie.director %>, Ocena: <%= movie.rating %>,
-                Status: <%= movie.status %>
-            </li>
+        <li>
+            <strong><%= movie.title %></strong> – <%= movie.director %>,
+            Ocena: <%= movie.rating %>,
+            Status: <%= movie.status %><br>
+            <p><em>Recenzja:</em> <%= movie.review || 'Brak' %></p>
+        </li>
     <% }) %>
 </ul>
 

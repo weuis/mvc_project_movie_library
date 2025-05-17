@@ -9,14 +9,16 @@ exports.addMovieForm = (req, res) => {
 };
 
 exports.addMovie = (req, res) => {
-    const { title, director, rating, status } = req.body;
+    const { title, director, rating, status, review } = req.body;
+
     const newMovie = {
         title,
         director,
         rating,
         status,
-        review: ''
+        review
     };
+
     movies.push(newMovie);
     res.redirect('/');
 };

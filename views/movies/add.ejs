@@ -1,17 +1,32 @@
 <%- include('../partials/header') %>
 
+<%- include('../partials/header') %>
+
 <h2>Dodaj film</h2>
 <form method="POST" action="/add">
-    <input type="text" name="title" placeholder="Tytuł" required />
-    <input type="text" name="director" placeholder="Reżyser" required />
-    <input type="number" name="rating" min="1" max="10" placeholder="Ocena" required />
+    <label>
+        <input type="text" name="title" placeholder="Tytuł" required />
+    </label>
+    <label>
+        <input type="text" name="director" placeholder="Reżyser" required />
+    </label>
+    <label>
+        <input type="number" name="rating" min="1" max="10" placeholder="Ocena" required />
+    </label>
 
-    <select name="status" required>
-        <option value="W trakcie">W trakcie</option>
-        <option value="Obejrzany">Obejrzany</option>
-    </select>
+    <label>
+        <select name="status" required>
+            <option value="W trakcie">W trakcie</option>
+            <option value="Obejrzany">Obejrzany</option>
+        </select>
+    </label>
+
+    <label>
+        <textarea name="review" placeholder="Twoja recenzja..."></textarea>
+    </label>
 
     <button type="submit">Dodaj</button>
 </form>
 
 <%- include('../partials/footer') %>
+
