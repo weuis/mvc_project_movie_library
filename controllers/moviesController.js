@@ -9,12 +9,12 @@ exports.addMovieForm = (req, res) => {
 };
 
 exports.addMovie = (req, res) => {
-    const { title, director, rating } = req.body;
+    const { title, director, rating, status } = req.body;
     const newMovie = {
         title,
         director,
         rating,
-        status: 'W trakcie',
+        status,
         review: ''
     };
     movies.push(newMovie);
