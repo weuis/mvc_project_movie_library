@@ -1,0 +1,17 @@
+<%- include('../partials/header') %>
+
+<h2><%= movie.title %></h2>
+<p><strong>Reżyser:</strong> <%= movie.director %></p>
+<p><strong>Ocena:</strong> <%= movie.rating %></p>
+<p><strong>Status:</strong> <%= movie.status %></p>
+<p><strong>Recenzja:</strong> <%= movie.review %></p>
+
+<a href="/edit/<%= id %>">Edytuj</a>
+
+<form method="POST" action="/delete/<%= id %>" onsubmit="return confirm('Na pewno chcesz usunąć film?')">
+    <button type="submit">Usuń</button>
+</form>
+
+<a href="/">← Powrót</a>
+
+<%- include('../partials/footer') %>

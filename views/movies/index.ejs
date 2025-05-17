@@ -6,15 +6,15 @@
 <ul>
     <% if (movies.length === 0) { %>
         <li>Brak filmów w kolekcji.</li>
+    <% } else { %>
+        <% movies.forEach((movie, index) => { %>
+            <li>
+                <strong><%= movie.title %></strong> – <%= movie.director %>, Ocena: <%= movie.rating %>,
+                Status: <%= movie.status %> —
+                <a href="/details/<%= index %>">Szczegóły</a>
+            </li>
+        <% }) %>
     <% } %>
-    <% movies.forEach((movie, index) => { %>
-        <li>
-            <strong><%= movie.title %></strong> – <%= movie.director %>,
-            Ocena: <%= movie.rating %>,
-            Status: <%= movie.status %><br>
-            <p><em>Recenzja:</em> <%= movie.review || 'Brak' %></p>
-        </li>
-    <% }) %>
 </ul>
 
 <%- include('../partials/footer') %>
