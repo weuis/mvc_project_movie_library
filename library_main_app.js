@@ -32,10 +32,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', moviesRoutes);
 
-app.use((req, res) => {
-    res.status(404).render('404', { url: req.originalUrl });
-});
-
 app.listen(PORT, () => {
     console.log(`🚀 Serwer działa na http://localhost:${PORT}`);
 });

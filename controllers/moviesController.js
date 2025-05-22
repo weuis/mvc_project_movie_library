@@ -62,6 +62,7 @@ exports.editMovieForm = (req, res) => {
 exports.updateMovie = (req, res) => {
     const { title, director, rating, status, review } = req.body;
     const movie = findMovieById(req.params.id);
+
     if (!movie) return res.status(404).send('Film nie znaleziony.');
 
     movie.title = title.trim();
@@ -78,4 +79,9 @@ exports.deleteMovie = (req, res) => {
     movies = movies.filter(m => m.id !== req.params.id);
     saveMovies(movies);
     res.redirect('/');
+};
+
+exports.topRated = (req, res) => {
+    const topMovies = movies.filter(movie => Number(movie.rating) > 8);
+    res.render('movies/top_movies', { movies: topMovies });
 };

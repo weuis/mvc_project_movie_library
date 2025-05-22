@@ -1,0 +1,18 @@
+<%- include('../partials/header') %>
+
+<main>
+    <h1>🌟 Najwyżej oceniane filmy</h1>
+    <ul class="movie-list">
+        <% if (movies.length === 0) { %>
+            <li>Brak filmów z oceną powyżej 8.</li>
+        <% } else { %>
+            <% movies.forEach((movie) => { %>
+                <li>
+                    <strong><%= movie.title %></strong> — <%= movie.director %>, Ocena: <%= movie.rating %>
+                </li>
+            <% }) %>
+        <% } %>
+    </ul>
+</main>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,9 @@
+<%- include('./partials/header') %>
+
+<div class="not-found">
+    <h1>404 – Nie znaleziono strony</h1>
+    <p>Strona "<%= url %>" nie istnieje 😢</p>
+    <a href="/" class="button">← Powrót do strony głównej</a>
+</div>
+
+<%- include('./partials/footer') %>
