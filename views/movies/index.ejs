@@ -19,13 +19,22 @@
     </ul>
     <form method="GET" action="/">
         <label>Sortuj według:</label>
-        <select name="sort" onchange="this.form.submit()">
-            <option value="">Brak</option>
-            <option value="title">Tytuł</option>
-            <option value="rating">Ocena</option>
-            <option value="status">Status</option>
-        </select>
+        <label>
+            <select name="sort" onchange="this.form.submit()">
+                <option value="">Brak</option>
+                <option value="title">Tytuł</option>
+                <option value="rating">Ocena</option>
+                <option value="status">Status</option>
+            </select>
+        </label>
     </form>
+
+    <% if (success_msg) { %>
+        <div class="flash-success"><%= success_msg %></div>
+    <% } %>
+    <% if (error_msg) { %>
+        <div class="flash-error"><%= error_msg %></div>
+    <% } %>
 </main>
 
 <%- include('../partials/footer') %>

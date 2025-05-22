@@ -38,6 +38,7 @@ exports.addMovie = (req, res) => {
 
     movies.push(newMovie);
     saveMovies(movies);
+    req.flash('success_msg', 'Film dodany pomyślnie!');
     res.redirect('/');
 };
 
