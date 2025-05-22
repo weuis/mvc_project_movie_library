@@ -25,7 +25,12 @@ exports.addMovieForm = (req, res) => {
 };
 
 exports.addMovie = (req, res) => {
-    const { title, director, rating, status, review } = req.body;
+    const { title, director, rating, status, review, genre } = req.body;
+
+    if (!title || !director || !rating || rating < 1 || rating > 10) {
+        req.flash('error_msg', 'Wypełnij poprawnie wszystkie pola!');
+        return res.redirect('/add');
+    }
 
     const newMovie = {
         id: uuid(),
@@ -33,16 +38,13 @@ exports.addMovie = (req, res) => {
         director: director.trim(),
         rating: Math.max(1, Math.min(10, Number(rating))),
         status: status === 'obejrzany' ? 'obejrzany' : 'do obejrzenia',
-        review: review.trim()
+        review: review.trim(),
+        genre: genre ? genre.trim() : 'Nieznany',
     };
-
-    if (!title || !director || !rating || rating < 1 || rating > 10) {
-        req.flash('error_msg', 'Wypełnij poprawnie wszystkie pola!');
-        return res.redirect('/add');
-    }
 
     movies.push(newMovie);
     saveMovies(movies);
+
     req.flash('success_msg', 'Film dodany pomyślnie!');
     res.redirect('/');
 };
@@ -60,7 +62,7 @@ exports.editMovieForm = (req, res) => {
 };
 
 exports.updateMovie = (req, res) => {
-    const { title, director, rating, status, review } = req.body;
+    const { title, director, rating, status, review, genre } = req.body;
     const movie = findMovieById(req.params.id);
 
     if (!movie) return res.status(404).send('Film nie znaleziony.');
@@ -70,8 +72,10 @@ exports.updateMovie = (req, res) => {
     movie.rating = Math.max(1, Math.min(10, Number(rating)));
     movie.status = status === 'obejrzany' ? 'obejrzany' : 'do obejrzenia';
     movie.review = review.trim();
+    movie.genre = genre ? genre.trim() : 'Nieznany';
 
     saveMovies(movies);
+    req.flash('success_msg', 'Film zaktualizowany pomyślnie!');
     res.redirect('/');
 };
 
@@ -85,3 +89,5 @@ exports.topRated = (req, res) => {
     const topMovies = movies.filter(movie => Number(movie.rating) > 8);
     res.render('movies/top_movies', { movies: topMovies });
 };
+
+
