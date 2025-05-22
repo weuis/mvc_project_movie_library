@@ -36,6 +36,11 @@ exports.addMovie = (req, res) => {
         review: review.trim()
     };
 
+    if (!title || !director || !rating || rating < 1 || rating > 10) {
+        req.flash('error_msg', 'Wypełnij poprawnie wszystkie pola!');
+        return res.redirect('/add');
+    }
+
     movies.push(newMovie);
     saveMovies(movies);
     req.flash('success_msg', 'Film dodany pomyślnie!');
