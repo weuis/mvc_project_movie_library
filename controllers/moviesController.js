@@ -6,9 +6,19 @@ let movies = loadMovies();
 const findMovieById = (id) => movies.find(m => m.id === id);
 
 exports.index = (req, res) => {
-    res.render('movies/index', { movies });
-};
+    const sort = req.query.sort;
+    let sortedMovies = [...movies];
 
+    if (sort === 'title') {
+        sortedMovies.sort((a, b) => a.title.localeCompare(b.title));
+    } else if (sort === 'rating') {
+        sortedMovies.sort((a, b) => b.rating - a.rating);
+    } else if (sort === 'status') {
+        sortedMovies.sort((a, b) => a.status.localeCompare(b.status));
+    }
+
+    res.render('movies/index', { movies: sortedMovies });
+};
 
 exports.addMovieForm = (req, res) => {
     res.render('movies/add');

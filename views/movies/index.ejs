@@ -17,6 +17,15 @@
             <% }) %>
         <% } %>
     </ul>
+    <form method="GET" action="/">
+        <label>Sortuj według:</label>
+        <select name="sort" onchange="this.form.submit()">
+            <option value="">Brak</option>
+            <option value="title">Tytuł</option>
+            <option value="rating">Ocena</option>
+            <option value="status">Status</option>
+        </select>
+    </form>
 </main>
 
 <%- include('../partials/footer') %>
