@@ -1,32 +1,31 @@
 <%- include('../partials/header') %>
 
-<%- include('../partials/header') %>
+<main>
+    <h2>➕ Dodaj film</h2>
+    <form method="POST" action="/add" class="form">
+        <label>
+            <input type="text" name="title" placeholder="🎬 Tytuł" required />
+        </label>
+        <label>
+            <input type="text" name="director" placeholder="🎞️ Reżyser" required />
+        </label>
+        <label>
+            <input type="number" name="rating" min="1" max="10" placeholder="⭐ Ocena" required />
+        </label>
 
-<h2>Dodaj film</h2>
-<form method="POST" action="/add">
-    <label>
-        <input type="text" name="title" placeholder="Tytuł" required />
-    </label>
-    <label>
-        <input type="text" name="director" placeholder="Reżyser" required />
-    </label>
-    <label>
-        <input type="number" name="rating" min="1" max="10" placeholder="Ocena" required />
-    </label>
+        <label>
+            <select name="status" required>
+                <option value="W trakcie">⏳ W trakcie</option>
+                <option value="Obejrzany">✅ Obejrzany</option>
+            </select>
+        </label>
 
-    <label>
-        <select name="status" required>
-            <option value="W trakcie">W trakcie</option>
-            <option value="Obejrzany">Obejrzany</option>
-        </select>
-    </label>
+        <label>
+            <textarea name="review" placeholder="📝 Twoja recenzja..."></textarea>
+        </label>
 
-    <label>
-        <textarea name="review" placeholder="Twoja recenzja..."></textarea>
-    </label>
-
-    <button type="submit">Dodaj</button>
-</form>
+        <button type="submit">Dodaj film</button>
+    </form>
+</main>
 
 <%- include('../partials/footer') %>
-

@@ -1,17 +1,24 @@
 <%- include('../partials/header') %>
 
-<h2><%= movie.title %></h2>
-<p><strong>Reżyser:</strong> <%= movie.director %></p>
-<p><strong>Ocena:</strong> <%= movie.rating %></p>
-<p><strong>Status:</strong> <%= movie.status %></p>
-<p><strong>Recenzja:</strong> <%= movie.review %></p>
+<main class="movie-details">
+    <h2><%= movie.title %></h2>
 
-<a href="/edit/<%= id %>">Edytuj</a>
+    <ul class="movie-info">
+        <li><strong>🎞️ Reżyser:</strong> <%= movie.director %></li>
+        <li><strong>⭐ Ocena:</strong> <%= movie.rating %></li>
+        <li><strong>📌 Status:</strong> <%= movie.status %></li>
+        <li><strong>📝 Recenzja:</strong> <%= movie.review || 'Brak recenzji.' %></li>
+    </ul>
 
-<form method="POST" action="/delete/<%= id %>" onsubmit="return confirm('Na pewno chcesz usunąć film?')">
-    <button type="submit">Usuń</button>
-</form>
+    <div class="actions">
+        <a href="/edit/<%= movie.id %>" class="btn edit">✏️ Edytuj</a>
 
-<a href="/">← Powrót</a>
+        <form method="POST" action="/delete/<%= movie.id %>" onsubmit="return confirm('Na pewno chcesz usunąć film?')" class="inline-form">
+            <button type="submit" class="btn delete">🗑️ Usuń</button>
+        </form>
+    </div>
+
+    <a href="/" class="btn back">← Powrót do listy</a>
+</main>
 
 <%- include('../partials/footer') %>
