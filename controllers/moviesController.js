@@ -7,6 +7,8 @@ const findMovieById = (id) => movies.find(m => m.id === id);
 
 exports.index = (req, res) => {
     const sort = req.query.sort;
+    const movies = loadMovies();
+
     let sortedMovies = [...movies];
 
     if (sort === 'title') {

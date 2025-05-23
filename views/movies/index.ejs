@@ -29,7 +29,7 @@
                             <h2><%= movie.title %></h2>
                             <p>🎬 Reżyser: <%= movie.director %></p>
                             <p>⭐ Ocena: <%= movie.rating %>/10</p>
-                            <p>🕒 Status: <span class="status"><%= movie.status %></span></p>
+                            <p>🕒 Status: <span class="status <%= movie.status === 'obejrzany' ? 'done' : 'do' %>"><%= movie.status %></span></p>
                         </div>
                         <div class="movie-actions">
                             <a href="/details/<%= movie.id %>" class="details-link">📄 Szczegóły</a>
