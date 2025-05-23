@@ -16,4 +16,5 @@ router.post('/delete/:id', moviesController.deleteMovie);
 
 router.get('/top_movies', moviesController.topRated);
 
+
 module.exports = router;
