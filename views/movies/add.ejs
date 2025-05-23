@@ -1,31 +1,55 @@
 <%- include('../partials/header') %>
+<link rel="stylesheet" href="/css/add.css">
+<main class="container add-movie-page">
+    <section class="form-wrapper">
+        <h2 class="form-title">🎬 Dodaj nowy film</h2>
 
-<main>
-    <h2>➕ Dodaj film</h2>
-    <form method="POST" action="/add" class="form">
-        <label>
-            <input type="text" name="title" placeholder="🎬 Tytuł" required />
-        </label>
-        <label>
-            <input type="text" name="director" placeholder="🎞️ Reżyser" required />
-        </label>
-        <label>
-            <input type="number" name="rating" min="1" max="10" placeholder="⭐ Ocena" required />
-        </label>
+        <form method="POST" action="/add" class="movie-form">
+            <div class="form-field">
+                <label for="title">🎞️ Tytuł</label>
+                <input type="text" name="title" id="title" placeholder="np. Incepcja" required />
+            </div>
 
-        <label>
-            <select name="status" required>
-                <option value="W trakcie">⏳ W trakcie</option>
-                <option value="Obejrzany">✅ Obejrzany</option>
-            </select>
-        </label>
+            <div class="form-field">
+                <label for="director">🎬 Reżyser</label>
+                <input type="text" name="director" id="director" placeholder="np. Christopher Nolan" required />
+            </div>
 
-        <label>
-            <textarea name="review" placeholder="📝 Twoja recenzja..."></textarea>
-        </label>
+            <div class="form-field">
+                <label for="rating">⭐ Ocena (1-10)</label>
+                <input type="number" name="rating" id="rating" min="1" max="10" required />
+            </div>
 
-        <button type="submit">Dodaj film</button>
-    </form>
+            <div class="form-field">
+                <label for="genre">🎭 Gatunek</label>
+                <select name="genre" id="genre" required>
+                    <option>Akcja</option>
+                    <option>Komedia</option>
+                    <option>Dramat</option>
+                    <option>Horror</option>
+                    <option>Sci-Fi</option>
+                </select>
+            </div>
+
+            <div class="form-field">
+                <label for="status">📺 Status</label>
+                <select name="status" id="status" required>
+                    <option value="do obejrzenia">Do obejrzenia</option>
+                    <option value="obejrzany">Obejrzany</option>
+                </select>
+            </div>
+
+            <div class="form-field">
+                <label for="review">📝 Twoja recenzja</label>
+                <textarea name="review" id="review" rows="4" placeholder="Podziel się opinią..."></textarea>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-submit">🎥 Dodaj film</button>
+                <a href="/" class="btn btn-back">← Powrót do listy</a>
+            </div>
+        </form>
+    </section>
 </main>
 
 <%- include('../partials/footer') %>
