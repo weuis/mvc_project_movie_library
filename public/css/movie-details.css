@@ -1,0 +1,165 @@
+
+:root {
+    --color-primary: #6f42c1;
+    --color-secondary: #8a79d8;
+    --color-bg: #121217;
+    --color-text: #e0e0e0;
+    --color-accent: #ff6f61;
+    --font-primary: 'Poppins', sans-serif;
+    --transition-speed: 0.3s;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-primary);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.movie-details {
+    max-width: 720px;
+    width: 100%;
+    background: linear-gradient(145deg, #1e1e2f, #292940);
+    padding: 40px;
+    border-radius: 18px;
+    box-shadow: 0 12px 40px rgba(111, 66, 193, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.movie-title {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 24px;
+    color: var(--color-accent);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px var(--color-accent);
+}
+
+.movie-info {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 36px 0;
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+.movie-info li {
+    margin-bottom: 14px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 14px 20px;
+    border-radius: 12px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    box-shadow: inset 2px 2px 6px rgba(255,255,255,0.1),
+    inset -2px -2px 6px rgba(0,0,0,0.2);
+}
+
+.movie-info li span {
+    font-weight: 700;
+    min-width: 110px;
+    color: var(--color-secondary);
+}
+
+.btn {
+    font-weight: 700;
+    padding: 14px 28px;
+    border-radius: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color var(--transition-speed), color var(--transition-speed), box-shadow var(--transition-speed);
+    font-size: 1rem;
+    user-select: none;
+    box-shadow: 0 4px 14px rgba(111, 66, 193, 0.4);
+}
+
+.btn:hover {
+    box-shadow: 0 6px 20px rgba(111, 66, 193, 0.7);
+}
+
+.btn-edit {
+    background: var(--color-primary);
+    color: #fff;
+    border: none;
+    margin-right: 12px;
+}
+
+.btn-edit:hover {
+    background: var(--color-secondary);
+}
+
+.btn-delete {
+    background: #e04848;
+    color: #fff;
+    border: none;
+}
+
+.btn-delete:hover {
+    background: #ff6b6b;
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 2px solid var(--color-accent);
+    color: var(--color-accent);
+    display: block;
+    width: 180px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.btn-secondary:hover {
+    background: var(--color-accent);
+    color: #121217;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.inline-form {
+    display: inline;
+}
+
+@media (max-width: 480px) {
+    .movie-details {
+        padding: 30px 20px;
+    }
+
+    .movie-title {
+        font-size: 2.2rem;
+    }
+
+    .movie-info li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .movie-info li span {
+        min-width: auto;
+        margin-bottom: 6px;
+    }
+
+    .actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .btn-secondary {
+        width: 100%;
+    }
+}

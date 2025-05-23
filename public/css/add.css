@@ -1,23 +1,53 @@
+:root {
+    --color-primary: #6f42c1;
+    --color-secondary: #8a79d8;
+    --color-bg: #121217;
+    --color-text: #e0e0e0;
+    --color-accent: #ff6f61;
+    --color-input-bg: #292940;
+    --color-input-border: #6f42c1;
+    --transition-speed: 0.3s;
+    --font-primary: 'Poppins', sans-serif;
+}
+
+body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-primary);
+    margin: 0;
+    padding: 2rem 1rem;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
 .add-movie-page {
     max-width: 600px;
-    margin: 0 auto;
-    padding: 2rem;
-    background: #f8f9fa;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    animation: fadeIn 0.5s ease-in-out;
+    width: 100%;
+    background: linear-gradient(145deg, #1e1e2f, #292940);
+    padding: 2.5rem 3rem;
+    border-radius: 20px;
+    box-shadow: 0 16px 40px rgba(111, 66, 193, 0.6);
+    animation: fadeIn 0.6s ease forwards;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .form-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.8rem;
 }
 
 .form-title {
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--color-accent);
     text-align: center;
-    font-size: 2rem;
-    color: #343a40;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px var(--color-accent);
+    margin-bottom: 1rem;
 }
 
 .movie-form .form-field {
@@ -26,51 +56,101 @@
 }
 
 .movie-form label {
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: #495057;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: var(--color-secondary);
+    letter-spacing: 0.5px;
 }
 
 .movie-form input,
 .movie-form select,
 .movie-form textarea {
-    padding: 0.7rem;
-    border: 1px solid #ced4da;
-    border-radius: 8px;
-    font-size: 1rem;
+    background-color: var(--color-input-bg);
+    border: 2px solid transparent;
+    border-radius: 14px;
+    padding: 0.8rem 1rem;
+    font-size: 1.1rem;
+    color: var(--color-text);
+    font-family: var(--font-primary);
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+    resize: vertical;
+    min-height: 40px;
+}
+
+.movie-form input:focus,
+.movie-form select:focus,
+.movie-form textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 15px var(--color-primary);
+    background-color: #232338;
 }
 
 .movie-form textarea {
-    resize: vertical;
+    min-height: 120px;
 }
 
 .form-actions {
     display: flex;
     justify-content: space-between;
     gap: 1rem;
+    margin-top: 1.5rem;
 }
 
 .btn {
-    padding: 0.75rem 1.5rem;
+    flex: 1;
+    padding: 0.85rem 0;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 1.1rem;
     border: none;
-    border-radius: 8px;
-    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 6px 14px rgba(111, 66, 193, 0.5);
+    transition: background-color var(--transition-speed), box-shadow var(--transition-speed), transform var(--transition-speed);
+    color: #fff;
     text-align: center;
-    font-weight: bold;
-    font-size: 1rem;
 }
 
 .btn-submit {
-    background-color: #070707;
-    color: white;
+    background: var(--color-primary);
+}
+
+.btn-submit:hover {
+    background: var(--color-secondary);
+    box-shadow: 0 8px 25px var(--color-secondary);
+    transform: translateY(-2px);
 }
 
 .btn-back {
-    background-color: #000000;
-    color: white;
+    background: #333;
+}
+
+.btn-back:hover {
+    background: #555;
+    box-shadow: 0 8px 20px rgba(80, 80, 80, 0.7);
+    transform: translateY(-2px);
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+    .add-movie-page {
+        padding: 1.5rem 1.8rem;
+    }
+    .form-actions {
+        flex-direction: column;
+    }
+    .btn {
+        width: 100%;
+    }
 }

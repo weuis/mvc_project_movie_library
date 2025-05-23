@@ -1,25 +1,27 @@
-<%- include('../partials/header') %>
+<link rel="stylesheet" href="/css/movie-details.css">
 
 <main class="movie-details">
-    <h2><%= movie.title %></h2>
+    <h2 class="movie-title"><%= movie.title %></h2>
 
     <ul class="movie-info">
-        <li><strong>🎞️ Reżyser:</strong> <%= movie.director %></li>
-        <li><strong>⭐ Ocena:</strong> <%= movie.rating %></li>
-        <li><strong>📌 Status:</strong> <%= movie.status %></li>
-        <li><strong>📝 Recenzja:</strong> <%= movie.review || 'Brak recenzji.' %></li>
-        <li><strong>🎬 Gatunek:</strong> <%= movie.genre %></li>
+        <li><span>🎞️ Reżyser:</span> <%= movie.director %></li>
+        <li><span>⭐ Ocena:</span> <%= movie.rating %></li>
+        <li><span>📌 Status:</span> <%= movie.status %></li>
+        <li><span>📝 Recenzja:</span> <%= movie.review || 'Brak recenzji.' %></li>
+        <li><span>🎬 Gatunek:</span> <%= movie.genre %></li>
     </ul>
 
     <div class="actions">
-        <a href="/edit/<%= movie.id %>" class="btn edit">✏️ Edytuj</a>
+        <a href="/edit/<%= movie.id %>" class="btn btn-edit"> Edytuj</a>
 
         <form method="POST" action="/delete/<%= movie.id %>" onsubmit="return confirm('Na pewno chcesz usunąć film?')" class="inline-form">
-            <button type="submit" class="btn delete">🗑️ Usuń</button>
+            <button type="submit" class="btn btn-delete">Usuń</button>
         </form>
     </div>
 
-    <a href="/" class="btn back">← Powrót do listy</a>
+    <div class="form-actions">
+        <a href="/" class="btn btn-secondary">← Powrót do listy</a>
+    </div>
+
 </main>
 
-<%- include('../partials/footer') %>
