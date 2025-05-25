@@ -12,7 +12,7 @@
     </ul>
 
     <div class="actions">
-        <a href="/edit/<%= movie.id %>" class="btn btn-edit"> Edytuj</a>
+        <a href="/edit/<%= movie.id %>" class="btn btn-edit">Edytuj film</a>
 
         <form method="POST" action="/delete/<%= movie.id %>" onsubmit="return confirm('Na pewno chcesz usunąć film?')" class="inline-form">
             <button type="submit" class="btn btn-delete">Usuń</button>
