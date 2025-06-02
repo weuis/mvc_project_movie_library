@@ -32,27 +32,27 @@
     </section>
 
     <section class="movie-section">
-        <ul class="movie-list">
+        <ul class="movie-list <%= movies.length === 1 ? 'single-movie' : '' %>">
             <% if (movies.length === 0) { %>
                 <li class="empty">Brak filmów w kolekcji.</li>
             <% } else { %>
                 <% movies.forEach((movie) => { %>
-                        <li class="movie-card">
-                            <% if (movie.poster) { %>
-                                <div class="movie-poster">
-                                    <img src="<%= movie.poster %>" alt="Plakat filmu <%= movie.title %>" />
-                                </div>
-                            <% } %>
-                            <div class="movie-info">
-                                <h2><%= movie.title %></h2>
-                                <p>🎬 Reżyser: <%= movie.director %></p>
-                                <p>⭐ Ocena: <%= movie.rating %>/10</p>
-                                <p>🕒 Status: <span class="status <%= movie.status === 'obejrzany' ? 'done' : 'do' %>"><%= movie.status %></span></p>
+                    <li class="movie-card">
+                        <% if (movie.poster) { %>
+                            <div class="movie-poster">
+                                <img src="<%= movie.poster %>" alt="Plakat filmu <%= movie.title %>" />
                             </div>
-                            <div class="movie-actions">
-                                <a href="/details/<%= movie.id %>" class="details-link">📄 Szczegóły</a>
-                            </div>
-                        </li>
+                        <% } %>
+                        <div class="movie-info">
+                            <h2><%= movie.title %></h2>
+                            <p>🎬 Reżyser: <%= movie.director %></p>
+                            <p>⭐ Ocena: <%= movie.rating %>/10</p>
+                            <p>🕒 Status: <span class="status <%= movie.status === 'obejrzany' ? 'done' : 'do' %>"><%= movie.status %></span></p>
+                        </div>
+                        <div class="movie-actions">
+                            <a href="/details/<%= movie.id %>" class="details-link">📄 Szczegóły</a>
+                        </div>
+                    </li>
                 <% }) %>
             <% } %>
         </ul>

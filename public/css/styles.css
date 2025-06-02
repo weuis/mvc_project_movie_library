@@ -72,6 +72,13 @@ h1, h2 {
     gap: 1.8rem;
 }
 
+.movie-list.single-movie {
+    display: flex !important;
+    justify-content: center;
+    gap: 0;
+    grid-template-columns: none !important;
+}
+
 .movie-card {
     background: linear-gradient(145deg, #292940, #1e1e2f);
     border-radius: 18px;
