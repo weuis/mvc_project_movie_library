@@ -8,20 +8,32 @@ let movies = loadMovies();
 const findMovieById = (id) => movies.find(m => m.id === id);
 
 exports.index = (req, res) => {
-    const sort = req.query.sort;
+    const { sort, query } = req.query;
     const movies = loadMovies();
 
-    let sortedMovies = [...movies];
+    let filteredMovies = [...movies];
 
-    if (sort === 'title') {
-        sortedMovies.sort((a, b) => a.title.localeCompare(b.title));
-    } else if (sort === 'rating') {
-        sortedMovies.sort((a, b) => b.rating - a.rating);
-    } else if (sort === 'status') {
-        sortedMovies.sort((a, b) => a.status.localeCompare(b.status));
+    if (query) {
+        const lowerQuery = query.toLowerCase();
+        filteredMovies = filteredMovies.filter(movie =>
+            movie.title.toLowerCase().includes(lowerQuery)
+        );
     }
 
-    res.render('movies/index', { movies: sortedMovies });
+    if (sort === 'title') {
+        filteredMovies.sort((a, b) => a.title.localeCompare(b.title));
+    } else if (sort === 'rating') {
+        filteredMovies.sort((a, b) => b.rating - a.rating);
+    } else if (sort === 'status') {
+        filteredMovies.sort((a, b) => a.status.localeCompare(b.status));
+    }
+
+    res.render('movies/index', {
+        movies: filteredMovies,
+        query,
+        success_msg: req.flash('success_msg'),
+        error_msg: req.flash('error_msg')
+    });
 };
 
 exports.addMovieForm = (req, res) => {

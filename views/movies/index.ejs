@@ -18,6 +18,19 @@
 </header>
 
 <main class="container">
+
+    <section class="search-section">
+        <form method="GET" action="/" class="search-form">
+            <label>
+                <input type="text" name="query" placeholder="Szukaj filmów..." value="<%= typeof query !== 'undefined' ? query : '' %>">
+            </label>
+            <button type="submit">Szukaj</button>
+            <% if (query) { %>
+                <button type="button" class="btn-clear" onclick="window.location='/'"> Wyczyść</button>
+            <% } %>
+        </form>
+    </section>
+
     <section class="movie-section">
         <ul class="movie-list">
             <% if (movies.length === 0) { %>
