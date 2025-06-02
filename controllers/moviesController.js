@@ -1,6 +1,8 @@
 const { loadMovies, saveMovies } = require('../utils/db');
 const { v4: uuid } = require('uuid');
 
+const axios = require('axios');
+
 let movies = loadMovies();
 
 const findMovieById = (id) => movies.find(m => m.id === id);
@@ -26,12 +28,32 @@ exports.addMovieForm = (req, res) => {
     res.render('movies/add');
 };
 
-exports.addMovie = (req, res) => {
-    const { title, director, rating, status, review, genre } = req.body;
+exports.addMovie = async (req, res) => {
+    const {title, director, rating, status, review, genre} = req.body;
+
+    const apiKey = '507a05f882da46eac731db6a8ed49519'; // замени на свой ключ
+    let poster = '';
 
     if (!title || !director || !rating || rating < 1 || rating > 10) {
         req.flash('error_msg', 'Wypełnij poprawnie wszystkie pola!');
         return res.redirect('/add');
+    }
+
+    try {
+        const response = await axios.get('https://api.themoviedb.org/3/search/movie', {
+            params: {
+                api_key: apiKey,
+                query: title,
+                language: 'pl-PL',
+            }
+        });
+
+        const movie = response.data.results[0];
+        if (movie && movie.poster_path) {
+            poster = `https://image.tmdb.org/t/p/w400${movie.poster_path}`;
+        }
+    } catch (error) {
+        console.error('❌ Błąd pobierania plakatu z TMDb:', error.message);
     }
 
     const newMovie = {
@@ -42,6 +64,7 @@ exports.addMovie = (req, res) => {
         status: status === 'obejrzany' ? 'obejrzany' : 'do obejrzenia',
         review: review.trim(),
         genre: genre ? genre.trim() : 'Nieznany',
+        poster
     };
 
     movies.push(newMovie);

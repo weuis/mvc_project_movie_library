@@ -8,8 +8,15 @@
             <li>Brak filmów z oceną powyżej 8.</li>
         <% } else { %>
             <% movies.forEach((movie) => { %>
-                <li>
-                    <strong><%= movie.title %></strong> — <%= movie.director %>, Ocena: <%= movie.rating %>
+                <li class="movie-card">
+                    <% if (movie.poster) { %>
+                        <div class="movie-poster-small">
+                            <img src="<%= movie.poster %>" alt="Plakat filmu <%= movie.title %>" />
+                        </div>
+                    <% } %>
+                    <div class="movie-info-small">
+                        <strong><%= movie.title %></strong> — <%= movie.director %>, Ocena: <%= movie.rating %>
+                    </div>
                 </li>
             <% }) %>
         <% } %>

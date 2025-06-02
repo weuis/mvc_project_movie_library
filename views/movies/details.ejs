@@ -3,6 +3,12 @@
 <main class="movie-details">
     <h2 class="movie-title"><%= movie.title %></h2>
 
+    <% if (movie.poster) { %>
+        <div class="movie-poster-details">
+            <img src="<%= movie.poster %>" alt="Plakat filmu <%= movie.title %>" />
+        </div>
+    <% } %>
+
     <ul class="movie-info">
         <li><span>🎞️ Reżyser:</span> <%= movie.director %></li>
         <li><span>⭐ Ocena:</span> <%= movie.rating %></li>
