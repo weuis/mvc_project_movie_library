@@ -40,6 +40,10 @@ Przykład wpisu w pliku data/movies.json:
 }  
 Możesz dodawać dane poprzez formularz w aplikacji lub bezpośrednio w pliku JSON.
 
+## 🖼️ Zrzuty ekranu aplikacji 
+📄 Strona główna z listą filmów
+![Lista filmów](./screenshots/main.png)
+
 ## 🛠️ Instrukcja uruchomienia
 
 **Wymagania:**
