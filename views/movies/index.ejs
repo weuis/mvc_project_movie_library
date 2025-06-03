@@ -31,6 +31,18 @@
         </form>
     </section>
 
+    <section class="sort-section">
+        <form method="GET" action="/">
+            <label for="sort">Sortuj według:</label>
+            <select name="sort" id="sort" onchange="this.form.submit()">
+                <option value="">Brak</option>
+                <option value="title">Tytuł</option>
+                <option value="rating">Ocena</option>
+                <option value="status">Status</option>
+            </select>
+        </form>
+    </section>
+
     <section class="movie-section">
         <ul class="movie-list <%= movies.length === 1 ? 'single-movie' : '' %>">
             <% if (movies.length === 0) { %>
@@ -56,18 +68,6 @@
                 <% }) %>
             <% } %>
         </ul>
-    </section>
-
-    <section class="sort-section">
-        <form method="GET" action="/">
-            <label for="sort">Sortuj według:</label>
-            <select name="sort" id="sort" onchange="this.form.submit()">
-                <option value="">Brak</option>
-                <option value="title">Tytuł</option>
-                <option value="rating">Ocena</option>
-                <option value="status">Status</option>
-            </select>
-        </form>
     </section>
 
     <% if (success_msg) { %>
