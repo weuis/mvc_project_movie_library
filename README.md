@@ -41,8 +41,20 @@ Przykład wpisu w pliku data/movies.json:
 Możesz dodawać dane poprzez formularz w aplikacji lub bezpośrednio w pliku JSON.
 
 ## 🖼️ Zrzuty ekranu aplikacji 
-📄 Strona główna z listą filmów
+Strona główna z listą filmów
 ![Lista filmów](./screenshots/main.png)
+
+Formularz dodawania filmu
+![Formularz](./screenshots/Dodanie.png)
+
+Strona z najlepszymi filmami
+![Top](./screenshots/Top.png)
+
+Formularz szczegółów filmu
+![Detail](./screenshots/Detail.png)
+
+Formularz edycji filmu
+![Edit](./screenshots/Edit.png)
 
 ## 🛠️ Instrukcja uruchomienia
 
